@@ -13,6 +13,11 @@ $apellidos = $_POST['apellidos'] ?? null;
 if (empty($apellidos)) {
     $empty_apellidos = "Cognom obligatori";
 }
+
+$email = $_POST['email'] ?? null;
+if (empty($email)) {
+    $empty_email = "Email obligatori";
+}
 ?>
 
 <!DOCTYPE html>
@@ -34,12 +39,13 @@ if (empty($apellidos)) {
                 <input type="text" placeholder="qualificació" disabled value=''>
                 <!--aqui iran las cajitas <aside></aside>-->
                 <br><br>
-                <input type="text" placeholder="email" disabled value=''><br><br>
+                <input type="text" placeholder="email" disabled value='<?php echo $email ?>'><br><br>
                 <textarea  cols='22' rows='5' disabled></textarea>
                 <p class='errores'>
-                    <?php echo $empty_nif; ?>
-                    <?php echo $empty_nombre; ?>
-                    <?php echo $empty_apellidos; ?>
+                    <?php echo $empty_nif; ?> <br>
+                    <?php echo $empty_nombre; ?> <br>
+                    <?php echo $empty_apellidos; ?> <br>
+                    <?php echo $empty_email; ?> <br>
                 </p>
             </div>
         </div>
