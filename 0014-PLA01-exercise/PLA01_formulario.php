@@ -8,6 +8,11 @@
     <body>
         <div class='container'>
             <h1 class='centrar'>PLA01: FORMULARI</h1>
+
+            <!-- al pulsar el botón de sumbit del formulario, estamos indicando en el atributo action
+            de la etiqueta form que los datos se procesen en el PLA01_mostrardatos.php-->
+            <!-- dentro del atributo method indicamos que el envío de datos se realizará
+            utilizando el métod POST -->
             <form method="post" action="PLA01_mostrardatos.php">
                 <label for='nif'>Nif</label>
                 <input type="text" name="nif" id='nif'><br><br>
