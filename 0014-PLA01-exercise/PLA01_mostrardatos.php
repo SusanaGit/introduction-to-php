@@ -27,7 +27,7 @@ try {
 }
 
 
-$email = $_POST['email'] ?? null;
+$email = filter_input(INPUT_POST,'email', FILTER_VALIDATE_EMAIL) ?? null;
 try {
     if (empty($email)) {
         throw new Exception("Email obligatori");
@@ -36,19 +36,19 @@ try {
     $empty_email = $e->getMessage();
 }
 
-$nota = $_POST['nota'] ?? null;
+$nota = filter_input(INPUT_POST, 'nota', FILTER_VALIDATE_FLOAT) ?? null;
 $qualificacio = "";
 try {
-    if (empty($nota) || !is_numeric($nota) || $nota <= 0 || $nota > 10) {
+    if (empty($nota) || $nota <= 0 || $nota > 10) {
         throw new Exception("Nota obligatòria o no vàlida");
     } else {
         if ($nota < 5) {
             $qualificacio = "Suspens";
-        } else if ($nota >= 5 && $nota < 7) {
+        } elseif ($nota >= 5 && $nota < 7) {
             $qualificacio = "Aprobat";
-        } else if ($nota >=7 && $nota < 9) {
+        } elseif ($nota >=7 && $nota < 9) {
             $qualificacio = "Notable";
-        } else if ($nota >= 9 && $nota <= 10) {
+        } elseif ($nota >= 9 && $nota <= 10) {
             $qualificacio = "Excel·lent";
         }
     }
