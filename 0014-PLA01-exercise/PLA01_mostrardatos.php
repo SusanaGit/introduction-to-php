@@ -25,13 +25,13 @@ if (empty($nota) || !is_numeric($nota) || $nota <= 0) {
     $error_nota = "Nota obligatòria, no numèrica o negativa";
 } else {
     if ($nota < 5) {
-        $qualificacio = "Suspenso";
+        $qualificacio = "Suspens";
     } else if ($nota >= 5 && $nota < 7) {
-        $qualificacio = "Aprobado";
+        $qualificacio = "Aprobat";
     } else if ($nota >=7 && $nota < 9) {
         $qualificacio = "Notable";
-    } else if ($nota >=9) {
-        $qualificacio = "Excelente";
+    } else if ($nota >= 9) {
+        $qualificacio = "Excel·lent";
     }
 }
 
@@ -54,7 +54,28 @@ if (empty($nota) || !is_numeric($nota) || $nota <= 0) {
                 <input type="text" placeholder="cognoms" disabled value='<?php echo $apellidos ?>'><br><br>
 
                 <input type="text" placeholder="qualificació" disabled value='<?php echo $qualificacio ?>'>
-                <!--aqui iran las cajitas <aside></aside>-->
+
+                <?php
+                    $caixes_visualitzades = '';
+
+                    for ($i = 1; $i <= $nota; $i++) {
+                        if ($i < 5) {
+                            $caixes_visualitzades .= "<aside class='rojo'></aside>";
+                        } elseif ($i >= 5 && $i < 7) {
+                            $caixes_visualitzades .= "<aside class='amarillo'></aside>";
+                        } elseif ($i >= 7 && $i < 9) {
+                            $caixes_visualitzades .= "<aside class='verde'></aside>";
+                        } elseif ($i >= 9) {
+                            $caixes_visualitzades .= "<aside class='azul'></aside>";
+                        }
+                    }
+
+                    if ($caixes_visualitzades != '') {
+                        echo $caixes_visualitzades;
+                    }
+
+                ?>
+
                 <br><br>
                 <input type="text" placeholder="email" disabled value='<?php echo $email ?>'><br><br>
                 <textarea  cols='22' rows='5' disabled></textarea>
