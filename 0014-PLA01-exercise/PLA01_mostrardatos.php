@@ -1,43 +1,68 @@
 <?php
 $nif = $_POST['nif'] ?? null;
-if (empty($nif)) {
-    $empty_nif = "Nif obligatori";
+try {
+    if (empty($nif)) {
+        throw new Exception("Nif obligatori");
+    }
+} catch (Exception $e) {
+    $empty_nif = $e->getMessage();
 }
 
 $nombre = $_POST['nombre'] ?? null;
-if (empty($nombre)) {
-    $empty_nombre = "Nom obligatori";
+try {
+    if (empty($nombre)) {
+        throw new Exception("Nom obligatori");
+    }
+} catch (Exception $e) {
+    $empty_nombre = $e->getMessage();
 }
 
 $apellidos = $_POST['apellidos'] ?? null;
-if (empty($apellidos)) {
-    $empty_apellidos = "Cognom obligatori";
+try {
+    if (empty($apellidos)) {
+        throw new Exception("Cognom obligatori");
+    }
+} catch (Exception $e) {
+    $empty_apellidos = $e->getMessage();
 }
 
+
 $email = $_POST['email'] ?? null;
-if (empty($email)) {
-    $empty_email = "Email obligatori";
+try {
+    if (empty($email)) {
+        throw new Exception("Email obligatori");
+    }
+} catch (Exception $e) {
+    $empty_email = $e->getMessage();
 }
 
 $nota = $_POST['nota'] ?? null;
 $qualificacio = "";
-if (empty($nota) || !is_numeric($nota) || $nota <= 0 || $nota > 10) {
-    $error_nota = "Nota obligatòria o no vàlida";
-} else {
-    if ($nota < 5) {
-        $qualificacio = "Suspens";
-    } else if ($nota >= 5 && $nota < 7) {
-        $qualificacio = "Aprobat";
-    } else if ($nota >=7 && $nota < 9) {
-        $qualificacio = "Notable";
-    } else if ($nota >= 9 && $nota <= 10) {
-        $qualificacio = "Excel·lent";
+try {
+    if (empty($nota) || !is_numeric($nota) || $nota <= 0 || $nota > 10) {
+        throw new Exception("Nota obligatòria o no vàlida");
+    } else {
+        if ($nota < 5) {
+            $qualificacio = "Suspens";
+        } else if ($nota >= 5 && $nota < 7) {
+            $qualificacio = "Aprobat";
+        } else if ($nota >=7 && $nota < 9) {
+            $qualificacio = "Notable";
+        } else if ($nota >= 9 && $nota <= 10) {
+            $qualificacio = "Excel·lent";
+        }
     }
+} catch (Exception $e) {
+    $error_nota = $e->getMessage();
 }
 
 $missatge = $_POST["mensaje"] ?? null;
-if (empty($missatge)) {
-    $empty_missatge = "Missatge obligatori";
+try {
+    if (empty($missatge)) {
+        throw new Exception("Missatge obligatori");
+    }
+} catch (Exception $e) {
+    $empty_missatge = $e->getMessage();
 }
 
 ?>
