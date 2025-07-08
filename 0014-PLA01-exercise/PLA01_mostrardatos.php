@@ -3,6 +3,11 @@ $nif = $_POST['nif'] ?? null;
 if (empty($nif)) {
     $empty_nif = "Nif obligatori";
 }
+
+$nombre = $_POST['nombre'] ?? null;
+if (empty($nombre)) {
+    $empty_nombre = "Nom obligatori";
+}
 ?>
 
 <!DOCTYPE html>
@@ -17,8 +22,10 @@ if (empty($nif)) {
             <h1 class='centrar'>PLA01: MOSTRAR DADES</h1>
             <div class='card'>
                 <input type="text" placeholder="nif" disabled value='<?php echo $nif ?>'><br><br>
-                <input type="text" placeholder="nom" disabled value=''>
+
+                <input type="text" placeholder="nom" disabled value='<?php echo $nombre ?>'>
                 <input type="text" placeholder="cognoms" disabled value=''><br><br>
+
                 <input type="text" placeholder="qualificació" disabled value=''>
                 <!--aqui iran las cajitas <aside></aside>-->
                 <br><br>
@@ -26,6 +33,7 @@ if (empty($nif)) {
                 <textarea  cols='22' rows='5' disabled></textarea>
                 <p class='errores'>
                     <?php echo $empty_nif; ?>
+                    <?php echo $empty_nombre; ?>
                 </p>
             </div>
         </div>
