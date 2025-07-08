@@ -21,8 +21,8 @@ if (empty($email)) {
 
 $nota = $_POST['nota'] ?? null;
 $qualificacio = "";
-if (empty($nota) || !is_numeric($nota) || $nota <= 0) {
-    $error_nota = "Nota obligatòria, no numèrica o negativa";
+if (empty($nota) || !is_numeric($nota) || $nota <= 0 || $nota > 10) {
+    $error_nota = "Nota obligatòria o no vàlida";
 } else {
     if ($nota < 5) {
         $qualificacio = "Suspens";
@@ -30,9 +30,14 @@ if (empty($nota) || !is_numeric($nota) || $nota <= 0) {
         $qualificacio = "Aprobat";
     } else if ($nota >=7 && $nota < 9) {
         $qualificacio = "Notable";
-    } else if ($nota >= 9) {
+    } else if ($nota >= 9 && $nota <= 10) {
         $qualificacio = "Excel·lent";
     }
+}
+
+$missatge = $_POST["mensaje"] ?? null;
+if (empty($missatge)) {
+    $empty_missatge = "Missatge obligatori";
 }
 
 ?>
@@ -65,7 +70,7 @@ if (empty($nota) || !is_numeric($nota) || $nota <= 0) {
                             $caixes_visualitzades .= "<aside class='amarillo'></aside>";
                         } elseif ($i >= 7 && $i < 9) {
                             $caixes_visualitzades .= "<aside class='verde'></aside>";
-                        } elseif ($i >= 9) {
+                        } elseif ($i >= 9 && $i <= 10) {
                             $caixes_visualitzades .= "<aside class='azul'></aside>";
                         }
                     }
@@ -77,15 +82,22 @@ if (empty($nota) || !is_numeric($nota) || $nota <= 0) {
                 ?>
 
                 <br><br>
-                <input type="text" placeholder="email" disabled value='<?php echo $email ?>'><br><br>
-                <textarea  cols='22' rows='5' disabled></textarea>
+
+                <input type="text" placeholder="email" disabled value='<?php echo $email ?>'>
+
+                <br><br>
+
+                <textarea  cols='22' rows='5' disabled><?php echo $missatge; ?></textarea>
+
                 <p class='errores'>
                     <?php echo $empty_nif; ?> <br>
                     <?php echo $empty_nombre; ?> <br>
                     <?php echo $empty_apellidos; ?> <br>
                     <?php echo $empty_email; ?> <br>
                     <?php echo $error_nota; ?> <br>
+                    <?php echo $empty_missatge; ?> <br>
                 </p>
+
             </div>
         </div>
     </body>
