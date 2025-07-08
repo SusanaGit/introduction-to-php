@@ -8,6 +8,11 @@ $nombre = $_POST['nombre'] ?? null;
 if (empty($nombre)) {
     $empty_nombre = "Nom obligatori";
 }
+
+$apellidos = $_POST['apellidos'] ?? null;
+if (empty($apellidos)) {
+    $empty_apellidos = "Cognom obligatori";
+}
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +29,7 @@ if (empty($nombre)) {
                 <input type="text" placeholder="nif" disabled value='<?php echo $nif ?>'><br><br>
 
                 <input type="text" placeholder="nom" disabled value='<?php echo $nombre ?>'>
-                <input type="text" placeholder="cognoms" disabled value=''><br><br>
+                <input type="text" placeholder="cognoms" disabled value='<?php echo $apellidos ?>'><br><br>
 
                 <input type="text" placeholder="qualificació" disabled value=''>
                 <!--aqui iran las cajitas <aside></aside>-->
@@ -34,6 +39,7 @@ if (empty($nombre)) {
                 <p class='errores'>
                     <?php echo $empty_nif; ?>
                     <?php echo $empty_nombre; ?>
+                    <?php echo $empty_apellidos; ?>
                 </p>
             </div>
         </div>
