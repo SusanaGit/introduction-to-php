@@ -18,6 +18,23 @@ $email = $_POST['email'] ?? null;
 if (empty($email)) {
     $empty_email = "Email obligatori";
 }
+
+$nota = $_POST['nota'] ?? null;
+$qualificacio = "";
+if (empty($nota) || !is_numeric($nota) || $nota <= 0) {
+    $error_nota = "Nota obligatòria, no numèrica o negativa";
+} else {
+    if ($nota < 5) {
+        $qualificacio = "Suspenso";
+    } else if ($nota >= 5 && $nota < 7) {
+        $qualificacio = "Aprobado";
+    } else if ($nota >=7 && $nota < 9) {
+        $qualificacio = "Notable";
+    } else if ($nota >=9) {
+        $qualificacio = "Excelente";
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +53,7 @@ if (empty($email)) {
                 <input type="text" placeholder="nom" disabled value='<?php echo $nombre ?>'>
                 <input type="text" placeholder="cognoms" disabled value='<?php echo $apellidos ?>'><br><br>
 
-                <input type="text" placeholder="qualificació" disabled value=''>
+                <input type="text" placeholder="qualificació" disabled value='<?php echo $qualificacio ?>'>
                 <!--aqui iran las cajitas <aside></aside>-->
                 <br><br>
                 <input type="text" placeholder="email" disabled value='<?php echo $email ?>'><br><br>
@@ -46,6 +63,7 @@ if (empty($email)) {
                     <?php echo $empty_nombre; ?> <br>
                     <?php echo $empty_apellidos; ?> <br>
                     <?php echo $empty_email; ?> <br>
+                    <?php echo $error_nota; ?> <br>
                 </p>
             </div>
         </div>
