@@ -2,17 +2,24 @@
 	// CONSTANTES
 
     // inicializar las variables que utilicemos en el documento html
+    $noches = 0;
+    $ciudad = '';
+    $coche = 0;
+    $total = 0;
 
-    // comprobar que se ha pulsado el botón de enviar
-    // mirando el contenido que llega al servidor
+    // datos que tiene el servidor
     // print_r: para visualizar contenido de un array
     // las claves coinciden con el valor que hemos dado a los atributos name del formulario
     print_r($_POST);
 
+    // ver si existe el índice del array del servidor 'enviar'
+    if (isset($_POST['enviar'])) {
         // recoger los tres datos del formulario (noches, ciudad, coche)
-
         try {
             // validación de datos
+            $noches = $_POST['noches'] ?? null;
+            $ciudad = $_POST['ciudad'] ?? null;
+            $coche = $_POST['coche'] ?? null;
 
             // ejecutar la función costeHotel (noches) y recoger el resultado
 
@@ -24,6 +31,9 @@
         } catch (Exception $e) {
             echo $e -> getMessage();
         }
+    }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
