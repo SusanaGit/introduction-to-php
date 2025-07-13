@@ -4,6 +4,10 @@
     // inicializar las variables que utilicemos en el documento html
 
     // comprobar que se ha pulsado el botón de enviar
+    // mirando el contenido que llega al servidor
+    // print_r: para visualizar contenido de un array
+    // las claves coinciden con el valor que hemos dado a los atributos name del formulario
+    print_r($_POST);
 
         // recoger los tres datos del formulario (noches, ciudad, coche)
 
