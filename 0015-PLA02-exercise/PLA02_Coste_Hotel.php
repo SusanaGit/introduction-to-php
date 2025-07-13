@@ -60,7 +60,8 @@
 			</div>
 			<label class="col-sm-3 col-form-label"></label>
 		  	<button type="submit" class="btn btn-primary" name='enviar'>Enviar datos</button>
-		  	<br><br>
+            <button type="reset" class="btn btn-primary">Limpiar</button>
+            <br><br>
 		  	<div class="row mb-3">
 			    <label class="col-sm-3 col-form-label">Coste total: </label>
 			    <div class="col-sm-9">
