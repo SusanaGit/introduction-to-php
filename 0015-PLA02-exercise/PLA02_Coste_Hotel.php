@@ -1,5 +1,25 @@
 <?php
-	
+	// CONSTANTES
+
+    // inicializar las variables que utilicemos en el documento html
+
+    // comprobar que se ha pulsado el botón de enviar
+
+        // recoger los tres datos del formulario (noches, ciudad, coche)
+
+        try {
+            // validación de datos
+
+            // ejecutar la función costeHotel (noches) y recoger el resultado
+
+            // ejecutar la función costeAvion (ciudad) y recoger el resultado
+
+            // ejecutar la función costeCoche (coche) y recoger el resultado
+
+            // calcular el coste total del viaje
+        } catch (Exception $e) {
+            echo $e -> getMessage();
+        }
 ?>
 <!DOCTYPE html>
 <html lang="es">
