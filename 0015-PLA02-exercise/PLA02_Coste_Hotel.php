@@ -21,20 +21,63 @@
             $ciudad = $_POST['ciudad'] ?? null;
             $coche = $_POST['coche'] ?? null;
 
-            // ejecutar la función costeHotel (noches) y recoger el resultado
+            if (empty($noches) || !is_numeric($noches) || $noches < 0) {
+                throw new Exception("Noches debe ser numérico y mayor que 0.");
+            }
 
-            // ejecutar la función costeAvion (ciudad) y recoger el resultado
+            if (empty($ciudad)) {
+                throw new Exception("Se debe seleccionar una ciudad.");
+            }
 
-            // ejecutar la función costeCoche (coche) y recoger el resultado
+            if (empty($coche) || !is_numeric($coche) || $coche < 0 ) {
+                throw new Exception("Se deben seleccionar los días de alquiler.");
+            }
 
-            // calcular el coste total del viaje
+            $costeHotel = costeHotel($noches);
+            $costeVuelo = costeCiudad($ciudad);
+            $costeCoche = costeCoche($coche);
+
+            $costeTotal = $costeHotel + $costeVuelo + $costeCoche;
         } catch (Exception $e) {
             echo $e -> getMessage();
         }
     }
 
+    // devolver el precio total del hotel, considerando que cada noche cuesta 60 euros
+    function costeHotel(int $noches) : int{
+        return $noches * 60;
+    }
 
+    // devolver el precio del avión según la ciudad
+    function costeCiudad(int $ciudad) : int{
+        switch ($ciudad) {
+            case 'Madrid':
+                return 150;
+            case 'Paris':
+                return 250;
+            case 'Los Angeles':
+                return 450;
+            case 'Roma':
+                return 200;
+            default:
+                return throw new Exception("Ciudad no válida.");
+        }
+    }
+
+    // devolver el precio del alquiler del coche
+    function costeCoche(int $dias): int {
+        $alquilercoche = $dias * 40;
+
+        if ($dias >= 7) {
+            $alquilercoche = $alquilercoche - 50;
+        } else if ($dias >= 3) {
+            $alquilercoche = $alquilercoche - 20;
+        }
+
+        return $alquilercoche;
+    }
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -82,7 +125,9 @@
 			      <input type="text" class="form-control" name="total" id="total" disabled>
 			    </div>
 			</div><br>
-			<span class='errores'></span>
+			<span class='errores'>
+
+            </span>
 		</form>
 	</main>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
