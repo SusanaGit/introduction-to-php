@@ -6,6 +6,7 @@
     $ciudad = '';
     $coche = 0;
     $total = 0;
+    $errores = [];
 
     // datos que tiene el servidor
     // print_r: para visualizar contenido de un array
@@ -22,24 +23,24 @@
             $coche = $_POST['coche'] ?? null;
 
             if (empty($noches) || !is_numeric($noches) || $noches < 0) {
-                throw new Exception("Noches debe ser numérico y mayor que 0.");
+                $errores[] = "Noches debe ser numérico y mayor que 0.";
             }
 
             if (empty($ciudad)) {
-                throw new Exception("Se debe seleccionar una ciudad.");
+                $errores[] = "Se debe seleccionar una ciudad.";
             }
 
             if (empty($coche) || !is_numeric($coche) || $coche < 0 ) {
-                throw new Exception("Se deben seleccionar los días de alquiler.");
+                $errores[] = "Se debe seleccionar los días de alquiler del coche.";
             }
 
-            $costeHotel = costeHotel($noches);
+            $costeHotel = costeHotel((int)$noches);
             $costeVuelo = costeCiudad($ciudad);
-            $costeCoche = costeCoche($coche);
+            $costeCoche = costeCoche((int)$coche);
 
-            $costeTotal = $costeHotel + $costeVuelo + $costeCoche;
+            $total = $costeHotel + $costeVuelo + $costeCoche;
         } catch (Exception $e) {
-            echo $e -> getMessage();
+            $errores[] = $e -> getMessage();
         }
     }
 
@@ -49,7 +50,7 @@
     }
 
     // devolver el precio del avión según la ciudad
-    function costeCiudad(int $ciudad) : int{
+    function costeCiudad($ciudad) : int{
         switch ($ciudad) {
             case 'Madrid':
                 return 150;
@@ -122,11 +123,18 @@
 		  	<div class="row mb-3">
 			    <label class="col-sm-3 col-form-label">Coste total: </label>
 			    <div class="col-sm-9">
-			      <input type="text" class="form-control" name="total" id="total" disabled>
+			      <input type="text" class="form-control" name="total" id="total" disabled
+                  value="<?php echo $total; ?>">
 			    </div>
 			</div><br>
 			<span class='errores'>
-
+                <?php
+                    for ($i = 0; $i < count($errores); $i++) {
+                        echo $errores[$i];
+                        echo "<br>";
+                    }
+                ?>
+                <br>
             </span>
 		</form>
 	</main>
