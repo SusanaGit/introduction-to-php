@@ -1,10 +1,16 @@
 <?php
 	session_start();
 
-	
-	//Extraer los datos de la variable de sesión que utilizaremos en el documento html
-	
+	// extraer los datos de la variable de sesión que utilizaremos en el documento html
+    // extrae las claves asociativas del array y las convierte en variables
+	extract($_SESSION['personas'] ?? null);
+
+    // para no usar tod el rato la variable de sesión
+    if (isset($_SESSION['personas'])) {
+        $personas = $_SESSION['personas'];
+    }
 ?>
+
 <html>
     <head>
         <title>PLA03</title>
