@@ -52,7 +52,7 @@
               <button type="submit" class="btn btn-primary" name='modificacion'>Modificación persona</button>
               <button type="submit" class="btn btn-danger" name='baja'>Baja</button>
               <br><br>
-              <span></span>
+              <span><?=$mensajes ?? null?></span>
             </form><br>
 
             <table class="table table-striped">
