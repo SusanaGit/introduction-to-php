@@ -49,7 +49,7 @@
               <div class="row mb-3">
                 <label for="direccion" class="col-sm-2 col-form-label">Dirección</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="direccion" name="direccion" calue="<?=$direccion ?>">
+                  <input type="text" class="form-control" id="direccion" name="direccion" value="<?=$direccion ?>">
                 </div>
               </div>
               <label for="nombre" class="col-sm-2 col-form-label"></label>

@@ -3,25 +3,23 @@
     //FUNCION DE VALIDACION DE DATOS COMUNES
 	function validarDatos($nif, $nombre, $direccion) {
 
-		try {
-			// validar NIF
-            if (empty($nif)) {
-                throw new Exception("NIF obligatori.");
-            }
+        $errores = [];
 
-            // validar nombre
-            if (empty($nombre)) {
-                throw new Exception("Nom obligatori.");
-            }
+        if (empty($nif)) {
+            $errores[] = "Nif obligatorio";
+        }
 
-            // validar direccion
-            if (empty($direccion)) {
-                throw new Exception("Dirección obligatoria.");
-            }
-			
-		} catch (Exception $error) {
-			//relanzar la excepción
-			throw new Exception($error->getMessage());
-		}
+        if (empty($nombre)) {
+            $errores[] = "Nombre obligatorio";
+        }
+
+        if (empty($direccion)) {
+            $errores[] = "Direccion obligatorio";
+        }
+
+        if ($errores) {
+            throw new Exception(implode("<br>", $errores));
+        }
+
 	}
 ?>
