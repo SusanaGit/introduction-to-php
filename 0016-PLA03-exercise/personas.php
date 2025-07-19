@@ -1,9 +1,12 @@
 <?php
+    # activar las variables de sesión para recuperar los datos guardados por los servicios
 	session_start();
 
 	// extraer los datos de la variable de sesión que utilizaremos en el documento html
     // extrae las claves asociativas del array y las convierte en variables
-	extract($_SESSION['personas'] ?? []);
+	if (isset($_SESSION['personas'])) {
+        extract($_SESSION['personas']);
+    }
 
     // para no usar tod el rato la variable de sesión
     if (isset($_SESSION['personas'])) {
