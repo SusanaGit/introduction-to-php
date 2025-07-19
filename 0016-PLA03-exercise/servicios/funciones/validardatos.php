@@ -19,7 +19,8 @@ function validarDatos($nif, $nombre, $direccion) {
             $errores[] = "Direccion obligatorio";
         }
 
-        if ($errores) {
+        // lanzo la excepción si el array errores no está vacío
+        if (sizeof($errores)) {
             throw new ValidarDatosException($errores);
         }
 
