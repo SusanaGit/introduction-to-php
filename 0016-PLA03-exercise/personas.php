@@ -15,6 +15,8 @@
     if (isset($_SESSION['personas'])) {
         $personas = $_SESSION['personas'];
     }
+
+    echo __DIR__;
 ?>
 
 <html>
