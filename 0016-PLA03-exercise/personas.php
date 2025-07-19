@@ -68,7 +68,8 @@
 
                 ?>
                 <tr>
-                  <td>40000000A</td>
+                  <!-- desde la etiqueta tr me interesa recuperar la etiqueta td que tenga la class nif -->
+                  <td class='nif'>40000000A</td>
                   <td><input type='text' value='O-Ren Ishii' class='nombre'></td>
                   <td><input type='text' value='Graveyard avenue, 66' class='direccion'></td>
                   <td>

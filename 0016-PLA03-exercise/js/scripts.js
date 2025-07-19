@@ -16,6 +16,12 @@ function trasladarDatos(event) {
     console.log(tr)
 
 	//recuperar los datos de la persona
+    //en la etiqueta tr búscame dentro
+    let nif = tr.querySelector('.nif').innerText
+    let nombre = tr.querySelector('.nombre').value
+    let direccion = tr.querySelector('.direccion').value
+
+    console.log(nif, nombre, direccion)
 	
 	//trasladar los datos al formulario oculto
 
