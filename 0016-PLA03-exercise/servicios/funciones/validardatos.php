@@ -1,7 +1,9 @@
 <?php 
 
     //FUNCION DE VALIDACION DE DATOS COMUNES
-	function validarDatos($nif, $nombre, $direccion) {
+use exception\ValidarDatosException;
+
+function validarDatos($nif, $nombre, $direccion) {
 
         $errores = [];
 
@@ -18,8 +20,7 @@
         }
 
         if ($errores) {
-            throw new Exception(implode("<br>", $errores));
+            throw new ValidarDatosException($errores);
         }
 
 	}
-?>

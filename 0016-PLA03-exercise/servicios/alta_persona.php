@@ -1,5 +1,8 @@
-<?php 
-    session_start();
+<?php
+
+use exception\ValidarDatosException;
+
+session_start();
 
     //incorporar función validación
     require_once(__DIR__.'/funciones/validardatos.php');
@@ -10,9 +13,13 @@
     }
     
     //recuperar los datos sin espacios en blanco -trim()-
+    $nif = $_POST['nif'];
+    $nombre = $_POST['nombre'];
+    $direccion = $_POST['direccion'];
     
     try {
         //validar datos obligatorios
+        validarDatos($nif, $nombre, $direccion);
        
         //validar que el nif no exista en la base de datos
         
@@ -22,8 +29,14 @@
 
         //limpiar el formulario
 
-    } catch (Exception $e) {
-        
+    } catch (ValidarDatosException $errores) {
+        // capturo los mensajes de error
+        $erroresCapturados = $errores->getErrores();
+
+        // imprimo los errores
+        for ($i = 0; $i < count($erroresCapturados); $i++) {
+            echo $erroresCapturados[$i];
+        }
     }
 
     //compactaremos en un array las variables php que se muestran en el documento HTML y que correspondan a la operativa de alta
