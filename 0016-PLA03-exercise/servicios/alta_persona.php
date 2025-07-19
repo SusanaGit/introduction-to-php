@@ -2,7 +2,7 @@
     session_start();
 
     //incorporar función validación
-    require_once('funciones/validardatos.php');
+    require_once(__DIR__.'/funciones/validardatos.php');
 	
     //recuperar las personas del array
     if (isset($_SESSION['personas'])) {

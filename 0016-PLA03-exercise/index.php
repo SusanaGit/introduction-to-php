@@ -8,6 +8,7 @@
     $_SESSION['datos'] = [];
 
     # para cargar el archivo personas.php que es donde tenemos el formulario
+    # redirige: desde index directamente vamos a personas.php
     header("Location: personas.php");
 
 	//eliminar datos de accesos anteriores

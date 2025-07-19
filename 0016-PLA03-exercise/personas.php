@@ -32,6 +32,7 @@
             <br>
             <!-- en el action decimos qué programa del servidor se encargará de recoger los datos del formulario en función del botón pulsado -->
             <!-- en función de la petición al servidor, se dará una operativa u otra -->
+            <!-- clico el botón "Alta persona" y se ejecuta la acción de ir al archivo alta_persona.php-->
             <form method='post' action='servicios/alta_persona.php'>
               <div class="row mb-3">
                 <label for="nif" class="col-sm-2 col-form-label">Nif</label>
@@ -42,13 +43,13 @@
               <div class="row mb-3">
                 <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="nombre" name="nombre">
+                  <input type="text" class="form-control" id="nombre" name="nombre" value="<?=$nombre ?>">
                 </div>
               </div>
               <div class="row mb-3">
                 <label for="direccion" class="col-sm-2 col-form-label">Dirección</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="direccion" name="direccion">
+                  <input type="text" class="form-control" id="direccion" name="direccion" calue="<?=$direccion ?>">
                 </div>
               </div>
               <label for="nombre" class="col-sm-2 col-form-label"></label>
