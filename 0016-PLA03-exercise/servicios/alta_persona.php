@@ -9,7 +9,7 @@ session_start();
     require_once('../exception/ValidarDatosException.php');
 	
     //recuperar las personas del array
-    if (isset($_SESSION['personas'])) {
+    if (isset($_SESSION['datos'])) {
         $personas = $_SESSION['personas'];
     }
     

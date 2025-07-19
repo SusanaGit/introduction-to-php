@@ -24,7 +24,13 @@ function trasladarDatos(event) {
     console.log(nif, nombre, direccion)
 	
 	//trasladar los datos al formulario oculto
+    // quiero enviar los datos del nif, nombre y direccion al formulario
+    document.querySelector('#nifModi').value = nif
+    document.querySelector('#nombreModi').value = nombre
+    document.querySelector('#direccionModi').value = direccion
 
 	//submit del formulario
+    // enviar el formulario al servidor
+    document.querySelector('#formularioModi').submit()
 	
 }

@@ -1,20 +1,16 @@
 <?php
-    # activar las variables de sesión para recuperar los datos guardados por los servicios
+    # activo las variables de sesión para recuperar los datos guardados
 	session_start();
 
-    # inicializo variables
-    $mensajes=$nif=$nombre=$direccion=null;
+    # no quiero que salgan errores si las variables no tienen valores
+    $mensajes=$nif=$nombre=$direccion=$personas=null;
 
-	// extraer los datos de la variable de sesión que utilizaremos en el documento html
-    // extrae las claves asociativas del array y las convierte en variables
-	if (isset($_SESSION['personas'])) {
-        extract($_SESSION['personas']);
+	# obtengo los datos
+    if (isset($_SESSION['datos'])) {
+        $datos = $_SESSION['datos'];
+        extract($datos);
     }
 
-    // para no usar tod el rato la variable de sesión
-    if (isset($_SESSION['personas'])) {
-        $personas = $_SESSION['personas'];
-    }
 ?>
 
 <html>
@@ -102,10 +98,10 @@
              la fila donde está el botón, se trasladarán al formulario oculto, y necesitaré hacer el submit de este
              formulario -->
             <form method='post' action='servicios/modificacion_persona.php' id='formularioModi'>
-                <input type='hidden' name='nifModi'>
-                <input type='hidden' name='nombreModi'>
-                <input type='hidden' name="direccionModi">
-                <input type='hidden' name='modificar'>
+                <input type='hidden' name='nifModi' id='nifModi'>
+                <input type='hidden' name='nombreModi' id='nombreModi'>
+                <input type='hidden' name="direccionModi" id='direccionModi'>
+                <input type='hidden' name='modificar' id='modificar'>
             </form>
         </main>
 
