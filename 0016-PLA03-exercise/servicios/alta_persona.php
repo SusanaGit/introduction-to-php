@@ -9,24 +9,32 @@ session_start();
     require_once('../exception/ValidarDatosException.php');
 	
     //recuperar las personas del array
-    if (isset($_SESSION['datos'])) {
-        $personas = $_SESSION['personas'];
-    }
+    $datos = $_SESSION['datos'];
+    $personas = $datos['personas'];
     
     //recuperar los datos sin espacios en blanco -trim()-
-    $nif = $_POST['nif'];
-    $nombre = $_POST['nombre'];
-    $direccion = $_POST['direccion'];
+    $nif = trim($_POST['nif'] ?? '');
+    $nombre = trim($_POST['nombre'] ?? '');
+    $direccion = trim($_POST['direccion'] ?? '');
     
     try {
         //validar datos obligatorios
         validarDatos($nif, $nombre, $direccion);
        
         //validar que el nif no exista en la base de datos
+        if (array_key_exists($nif, $personas)) {
+            throw new ValidarDatosException(["El NIF ya existe."]);
+        }
         
         //guardar la persona en el array
-       
+        $personas[$nif] = [
+            'nombre' => $nombre,
+            'direccion' => $direccion
+        ];
+
         //mensaje de alta efectuada
+        $mensajes = $datos['mensajes'] ?? '';
+        $mensajes = "Alta efectuada";
 
         //limpiar el formulario
 
@@ -43,7 +51,16 @@ session_start();
     //compactaremos en un array las variables php que se muestran en el documento HTML y que correspondan a la operativa de alta
     
     //Trasladar el contenido del array $personas a la variable de sesión
-    $_SESSION['personas'] = $personas;
+    $_SESSION['datos'] = [
+        'mensajes' => $mensajes,
+        'nif' => $nif,
+        'nombre' => $nombre,
+        'direccion' => $direccion,
+        'personas' => $personas
+    ];
+
+    $datos['personas'] = $personas;
    
     //Retornar a la página principal
+    header("Location: ../personas.php");
     

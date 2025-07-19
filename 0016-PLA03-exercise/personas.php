@@ -109,4 +109,4 @@
         <script type="text/javascript" src='js/scripts.js'></script>
     </body>
 </html>
-<?php echo("<pre>".print_r($personas,true)."</pre>"); ?>
+<?php echo("<pre>".print_r($datos,true)."</pre>"); ?>
