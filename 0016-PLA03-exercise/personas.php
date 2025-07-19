@@ -2,6 +2,9 @@
     # activar las variables de sesión para recuperar los datos guardados por los servicios
 	session_start();
 
+    # inicializo variables
+    $mensajes=$nif=$nombre=$direccion=null;
+
 	// extraer los datos de la variable de sesión que utilizaremos en el documento html
     // extrae las claves asociativas del array y las convierte en variables
 	if (isset($_SESSION['personas'])) {
@@ -31,7 +34,7 @@
               <div class="row mb-3">
                 <label for="nif" class="col-sm-2 col-form-label">Nif</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="nif" name='nif'>
+                  <input type="text" class="form-control" id="nif" name='nif' value="<?=$nif ?>">
                 </div>
               </div>
               <div class="row mb-3">
@@ -49,10 +52,8 @@
               <label for="nombre" class="col-sm-2 col-form-label"></label>
               <!-- cuando se clique el botón Alta persona, se enviará al servidor el name 'alta' para que se haga una determinada acción -->
               <button type="submit" class="btn btn-success" name='alta'>Alta persona</button>
-              <button type="submit" class="btn btn-primary" name='modificacion'>Modificación persona</button>
-              <button type="submit" class="btn btn-danger" name='baja'>Baja</button>
               <br><br>
-              <span><?=$mensajes ?? null?></span>
+              <span><?=$mensajes?></span>
             </form><br>
 
             <table class="table table-striped">
@@ -65,18 +66,18 @@
                 <?php
 
                 ?>
-                <!--tr>
+                <tr>
                   <td>40000000A</td>
                   <td><input type='text' value='O-Ren Ishii' class='nombre'></td>
                   <td><input type='text' value='Graveyard avenue, 66' class='direccion'></td>
                   <td>
-                    <form method='post' action='#'>
+                    <form method='post' action='servicios/baja_persona.php'>
                         <input type='hidden' name='nifBaja' value='40000000A'>
                         <button type="submit" class="btn btn-warning" name='bajaPersona'>Baja</button>
                     </form>
                     <button type="button" class="btn btn-primary" name='modiPersona'>Modificar</button>
                   </td>
-                </tr-->
+                </tr>
             </table>
 
             <form method='post' action='servicios/baja_personas.php' id='formularioBaja'>
