@@ -1,9 +1,5 @@
 <?php
 
-namespace exception;
-
-use Exception;
-
 class ValidarDatosException extends Exception {
 
     private array $errores;
@@ -13,6 +9,8 @@ class ValidarDatosException extends Exception {
      */
     public function __construct(array $errores)
     {
+        // llamo al constructor de Exception
+        parent::__construct();
         $this->errores = $errores;
     }
 

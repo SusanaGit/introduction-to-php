@@ -1,8 +1,6 @@
 <?php 
 
-    //FUNCION DE VALIDACION DE DATOS COMUNES
-use exception\ValidarDatosException;
-
+//FUNCION DE VALIDACION DE DATOS COMUNES
 function validarDatos($nif, $nombre, $direccion) {
 
         $errores = [];

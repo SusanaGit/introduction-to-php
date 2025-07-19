@@ -1,11 +1,12 @@
 <?php
 
-use exception\ValidarDatosException;
-
 session_start();
 
     //incorporar función validación
-    require_once(__DIR__.'/funciones/validardatos.php');
+    require_once('funciones/validardatos.php');
+
+    //incorporo ValidarDatosException
+    require_once('../exception/ValidarDatosException.php');
 	
     //recuperar las personas del array
     if (isset($_SESSION['personas'])) {

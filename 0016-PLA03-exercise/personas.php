@@ -15,8 +15,6 @@
     if (isset($_SESSION['personas'])) {
         $personas = $_SESSION['personas'];
     }
-
-    echo __DIR__;
 ?>
 
 <html>
@@ -78,17 +76,30 @@
                         <input type='hidden' name='nifBaja' value='40000000A'>
                         <button type="submit" class="btn btn-warning" name='bajaPersona'>Baja</button>
                     </form>
-                    <button type="button" class="btn btn-primary" name='modiPersona'>Modificar</button>
+                    <!-- la función trasladarDatos() es de javascript -->
+                    <!-- cuando asociamos una función al evento le diremos que nos envíe un parámetro
+                    que se llama event. el parámetro event es un objeto creado por el navegador. cada vez
+                    que se produce un evento, se crea un event. -->
+                    <button onclick="trasladarDatos(event)" type="button" class="btn btn-primary" name="modiPersona">Modificar</button>
                   </td>
                 </tr>
             </table>
 
+            <!--FORMULARIO OCULTO PARA LA BAJA-->
+            <!-- para guardar información que no queremos que vea el usuario -->
+            <!-- necesitamos javascript para que cuando el usuario clique el botón, el nif, el nombre y la dirección de
+             la fila donde está el botón, se trasladarán al formulario oculto, y necesitaré hacer el submit de este
+             formulario -->
             <form method='post' action='servicios/baja_personas.php' id='formularioBaja'>
-                <input type='hidden' id='baja' name='baja'></input>
-                <button type="submit" class="btn btn-danger" id='baja' name='baja'>Baja personas</button>
+                <input type='hidden' name='nifBaja' value="400000A"></input>
+                <button type="submit" class="btn btn-danger" id='baja' name="baja">Baja personas</button>
             </form>
 
             <!--FORMULARIO OCULTO PARA LA MODIFICACION-->
+            <!-- para guardar información que no queremos que vea el usuario -->
+            <!-- necesitamos javascript para que cuando el usuario clique el botón, el nif, el nombre y la dirección de
+             la fila donde está el botón, se trasladarán al formulario oculto, y necesitaré hacer el submit de este
+             formulario -->
             <form method='post' action='servicios/modificacion_persona.php' id='formularioModi'>
                 <input type='hidden' name='nifModi'>
                 <input type='hidden' name='nombreModi'>
