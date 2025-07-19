@@ -3,7 +3,7 @@
 
 	// extraer los datos de la variable de sesión que utilizaremos en el documento html
     // extrae las claves asociativas del array y las convierte en variables
-	extract($_SESSION['personas'] ?? null);
+	extract($_SESSION['personas'] ?? []);
 
     // para no usar tod el rato la variable de sesión
     if (isset($_SESSION['personas'])) {
@@ -22,6 +22,8 @@
         <main>
             <h1 class='centrar'>PLA03: MANTENIMIENTO PERSONAS</h1>
             <br>
+            <!-- en el action decimos qué programa del servidor se encargará de recoger los datos del formulario en función del botón pulsado -->
+            <!-- en función de la petición al servidor, se dará una operativa u otra -->
             <form method='post' action='servicios/alta_persona.php'>
               <div class="row mb-3">
                 <label for="nif" class="col-sm-2 col-form-label">Nif</label>
@@ -42,7 +44,10 @@
                 </div>
               </div>
               <label for="nombre" class="col-sm-2 col-form-label"></label>
+              <!-- cuando se clique el botón Alta persona, se enviará al servidor el name 'alta' para que se haga una determinada acción -->
               <button type="submit" class="btn btn-success" name='alta'>Alta persona</button>
+              <button type="submit" class="btn btn-primary" name='modificacion'>Modificación persona</button>
+              <button type="submit" class="btn btn-danger" name='baja'>Baja</button>
               <br><br>
               <span></span>
             </form><br>

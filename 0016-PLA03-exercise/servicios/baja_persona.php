@@ -2,6 +2,9 @@
     session_start();
 
     //recuperar las personas del array
+    if (isset($_SESSION['personas'])) {
+        $personas = $_SESSION['personas'];
+    }
 
     //recuperar el nif
 
@@ -17,9 +20,10 @@
        
     }
 
-     //compactaremos en un array las variables php que se muestran en el documento HTML y que correspondan a la operativa de alta
+    //compactaremos en un array las variables php que se muestran en el documento HTML y que correspondan a la operativa de alta
     
-     //Trasladar el contenido del array $personas a la variable de sesión
+    //Trasladar el contenido del array $personas a la variable de sesión
+    $_SESSION['personas'] = $personas;
  
-     //Retornar a la página principal
+    //Retornar a la página principal
 		

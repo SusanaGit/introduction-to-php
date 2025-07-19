@@ -4,6 +4,9 @@
     //incorporar función validación 
 	
     //recuperar las personas del array
+    if (isset($_SESSION['personas'])) {
+        $personas = $_SESSION['personas'];
+    }
     
     //recuperar los datos sin espacios en blanco -trim()-
     
@@ -17,6 +20,7 @@
         //mensaje de alta efectuada
 
         //limpiar el formulario
+
     } catch (Exception $e) {
         
     }
@@ -24,6 +28,7 @@
     //compactaremos en un array las variables php que se muestran en el documento HTML y que correspondan a la operativa de alta
     
     //Trasladar el contenido del array $personas a la variable de sesión
+    $_SESSION['personas'] = $personas;
    
     //Retornar a la página principal
     
